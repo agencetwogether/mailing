@@ -2,13 +2,10 @@
 
 namespace Agencetwogether\Mailing;
 
-use Agencetwogether\Mailing\Commands\MailingCommand;
 use Agencetwogether\Mailing\Events\NewsletterSubscribedEvent;
 use Agencetwogether\Mailing\Listeners\NewsletterSubscribedListener;
 use Agencetwogether\Mailing\Services\MailingManager;
-use Agencetwogether\Mailing\Testing\TestsMailing;
 use Illuminate\Support\Facades\Event;
-use Livewire\Features\SupportTesting\Testable;
 use Spatie\LaravelPackageTools\Commands\InstallCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
@@ -27,17 +24,14 @@ class MailingServiceProvider extends PackageServiceProvider
          * More info: https://github.com/spatie/laravel-package-tools
          */
         $package->name(static::$name)
-            ->hasConfigFile()
             ->hasMigrations($this->getMigrations())
             ->runsMigrations()
             ->hasTranslations()
-            ->hasCommands($this->getCommands())
             ->hasInstallCommand(function (InstallCommand $command) {
                 $command
-                    // ->publishConfigFile()
-                    // ->publishMigrations()
-                    ->askToRunMigrations();
-                // ->askToStarRepoOnGitHub('agencetwogether/mailing');
+                    ->publishMigrations()
+                    ->askToRunMigrations()
+                    ->askToStarRepoOnGitHub('agencetwogether/mailing');
             });
     }
 
@@ -54,19 +48,6 @@ class MailingServiceProvider extends PackageServiceProvider
             NewsletterSubscribedEvent::class,
             NewsletterSubscribedListener::class
         );
-
-        // Testing
-        // Testable::mixin(new TestsMailing);
-    }
-
-    /**
-     * @return array<class-string>
-     */
-    protected function getCommands(): array
-    {
-        return [
-            MailingCommand::class,
-        ];
     }
 
     /**

@@ -40,8 +40,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Agencetwogether\\Mailing\\": "src/",
-            "Agencetwogether\\Mailing\\Database\\Factories\\": "database/factories/"
+            "Agencetwogether\\Mailing\\": "src/"
         }
     },
     "autoload-dev": {

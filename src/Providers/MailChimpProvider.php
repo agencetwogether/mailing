@@ -10,7 +10,6 @@ class MailchimpProvider implements MailingProviderInterface
 
     public function subscribe(string $email, array $data = [], array $options = []): void
     {
-        // Exemple simplifié
-        // Http::withToken($this->config['api_key'])->post(...);
+        // TODO
     }
 }

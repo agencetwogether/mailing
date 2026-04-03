@@ -14,8 +14,6 @@ class MailjetProvider implements MailingProviderInterface
     {
         $listId = $options['list_id'] ?? $this->config['list_id'];
 
-        // Exemple simplifié
-        // Http::withToken($this->config['api_key'])->post(...);
         $response = Http::withBasicAuth($this->config['api_key'], $this->config['api_secret'])
             ->post('https://api.mailjet.com/v3/REST/contactslist/'.$listId.'/managecontact', [
                 'Email' => $email,

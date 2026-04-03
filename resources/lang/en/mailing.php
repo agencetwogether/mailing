@@ -10,13 +10,7 @@ return [
                 'api_key' => 'API Key',
                 'api_secret' => 'Secret Key',
                 'list_id' => 'Main List ID',
-                'subscription_newsletter' => 'Activate subscription to newsletter',
-            ],
-            'helper' => [
-                'provider' => '',
-                'api_key' => '',
-                'api_secret' => '',
-                'list_id' => '',
+                'subscription_newsletter' => 'Show the newsletter signup option',
             ],
             'tabs' => [
                 'general' => 'General',
