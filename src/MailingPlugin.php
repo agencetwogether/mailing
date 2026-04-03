@@ -2,11 +2,17 @@
 
 namespace Agencetwogether\Mailing;
 
+use Agencetwogether\Mailing\Filament\Pages\ManageMailingSettings;
 use Filament\Contracts\Plugin;
 use Filament\Panel;
 
 class MailingPlugin implements Plugin
 {
+    public static function make(): static
+    {
+        return app(static::class);
+    }
+
     public function getId(): string
     {
         return 'mailing';
@@ -14,17 +20,15 @@ class MailingPlugin implements Plugin
 
     public function register(Panel $panel): void
     {
-        //
+        $panel
+            ->pages([
+                ManageMailingSettings::class,
+            ]);
     }
 
     public function boot(Panel $panel): void
     {
         //
-    }
-
-    public static function make(): static
-    {
-        return app(static::class);
     }
 
     public static function get(): static
