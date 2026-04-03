@@ -2,11 +2,14 @@
 
 namespace Agencetwogether\Mailing\Filament\Pages;
 
+use Agencetwogether\Mailing\Enums\MailingProviders;
 use Agencetwogether\Mailing\Settings\MailingSettings;
 use App\Enums\NavigationGroup;
 use BackedEnum;
 use BezhanSalleh\FilamentShield\Traits\HasPageShield;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Toggle;
 use Filament\Pages\SettingsPage;
 use Filament\Schemas\Components\Tabs;
 use Filament\Schemas\Components\Tabs\Tab;
@@ -45,8 +48,10 @@ class ManageMailingSettings extends SettingsPage
                         Tab::make(__('mailing::mailing.mailing-settings.form.tabs.general'))
                             ->icon('phosphor-seal-warning')
                             ->schema([
-                                TextInput::make('provider')
+                                Select::make('provider')
                                     ->label(__('mailing::mailing.mailing-settings.form.label.provider'))
+                                    ->native(false)
+                                    ->options(MailingProviders::class)
                                     ->required(),
                                 TextInput::make('api_key')
                                     ->label(__('mailing::mailing.mailing-settings.form.label.api_key')),
@@ -54,7 +59,8 @@ class ManageMailingSettings extends SettingsPage
                                     ->label(__('mailing::mailing.mailing-settings.form.label.api_secret')),
                                 TextInput::make('list_id')
                                     ->label(__('mailing::mailing.mailing-settings.form.label.list_id')),
-                                // TODO Field extra
+                                Toggle::make('subscription_newsletter')
+                                    ->label(__('mailing::mailing.mailing-settings.form.label.subscription_newsletter')),
 
                             ]),
                     ])

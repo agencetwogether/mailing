@@ -12,7 +12,8 @@ class NewsletterSubscribedListener implements ShouldQueue
     {
         app(NewsletterService::class)->subscribe(
             $event->email,
-            $event->data
+            $event->data,
+            $event->options
         );
     }
 }

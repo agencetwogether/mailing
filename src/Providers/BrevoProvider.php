@@ -8,7 +8,7 @@ class BrevoProvider implements MailingProviderInterface
 {
     public function __construct(protected array $config) {}
 
-    public function subscribe(string $email, array $data = []): void
+    public function subscribe(string $email, array $data = [], array $options = []): void
     {
         // Exemple simplifié
         // Http::withToken($this->config['api_key'])->post(...);

@@ -14,6 +14,7 @@ class NewsletterSubscribedEvent
 
     public function __construct(
         public string $email,
-        public array $data = []
+        public array $data = [],
+        public array $options = []
     ) {}
 }

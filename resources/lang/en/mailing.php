@@ -1,6 +1,5 @@
 <?php
 
-// translations for Agencetwogether/Mailing
 return [
     'mailing-settings' => [
         'title' => 'Mailing Settings',
@@ -10,15 +9,14 @@ return [
                 'provider' => 'Provider',
                 'api_key' => 'API Key',
                 'api_secret' => 'Secret Key',
-                'list_id' => 'List ID',
-                'extra' => 'Extra content',
+                'list_id' => 'Main List ID',
+                'subscription_newsletter' => 'Activate subscription to newsletter',
             ],
             'helper' => [
                 'provider' => '',
                 'api_key' => '',
                 'api_secret' => '',
                 'list_id' => '',
-                'extra' => '',
             ],
             'tabs' => [
                 'general' => 'General',

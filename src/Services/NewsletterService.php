@@ -8,8 +8,13 @@ class NewsletterService
         protected MailingManager $manager
     ) {}
 
-    public function subscribe(string $email, array $data = []): void
-    {
-        $this->manager->driver()->subscribe($email, $data);
+    public function subscribe(
+        string $email,
+        array $data = [],
+        array $options = []
+    ): void {
+        $this->manager
+            ->driver()
+            ->subscribe($email, $data, $options);
     }
 }
