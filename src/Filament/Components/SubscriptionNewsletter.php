@@ -23,6 +23,8 @@ class SubscriptionNewsletter extends Toggle
 
         $this->label('Recevoir les actualités de la paroisse');
 
+        $this->onColor('success');
+
         $this->visible(fn () => app(MailingSettings::class)->subscription_newsletter);
     }
 }

@@ -56,7 +56,7 @@ class MailingServiceProvider extends PackageServiceProvider
         );
 
         // Testing
-        Testable::mixin(new TestsMailing);
+        // Testable::mixin(new TestsMailing);
     }
 
     /**
