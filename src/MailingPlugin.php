@@ -1,15 +1,15 @@
 <?php
 
-namespace VendorName\Skeleton;
+namespace Agencetwogether\Mailing;
 
 use Filament\Contracts\Plugin;
 use Filament\Panel;
 
-class SkeletonPlugin implements Plugin
+class MailingPlugin implements Plugin
 {
     public function getId(): string
     {
-        return 'skeleton';
+        return 'mailing';
     }
 
     public function register(Panel $panel): void
