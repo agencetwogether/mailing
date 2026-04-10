@@ -3,6 +3,7 @@
 namespace Agencetwogether\Mailing;
 
 use Agencetwogether\Mailing\Filament\Pages\ManageMailingSettings;
+use Agencetwogether\Mailing\Filament\Resources\PendingSubscribers\PendingSubscriberResource;
 use Filament\Contracts\Plugin;
 use Filament\Panel;
 
@@ -21,6 +22,9 @@ class MailingPlugin implements Plugin
     public function register(Panel $panel): void
     {
         $panel
+            ->resources([
+                PendingSubscriberResource::class,
+            ])
             ->pages([
                 ManageMailingSettings::class,
             ]);

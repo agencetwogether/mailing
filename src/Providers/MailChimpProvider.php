@@ -12,4 +12,9 @@ class MailchimpProvider implements MailingProviderInterface
     {
         // TODO
     }
+
+    public function sendConfirmationEmail(string $email, string $token, array $data = [], array $options = []): void
+    {
+        // TODO
+    }
 }

@@ -53,7 +53,7 @@ public function panel(Panel $panel): Panel
 2. Add in your form
 
 ```php
-use Agencetwogether\Mailing\Filament\Components\SubscriptionNewsletter;
+use Agencetwogether\Mailing\Filament\Components\SubscriptionNewsletterToggle;
 use Filament\Forms\Components\TextInput;
 
 public function form(Schema $schema): Schema
@@ -62,7 +62,7 @@ public function form(Schema $schema): Schema
         ->components([
             TextInput::make('name'),
 
-            SubscriptionNewsletter::make(),
+            SubscriptionNewsletterToggle::make(),
             
         ]);
 }
@@ -71,7 +71,7 @@ public function form(Schema $schema): Schema
 3. Add in your submit/create/save method
 
 ```php
-use Agencetwogether\Mailing\Events\NewsletterSubscribedEvent;
+use Agencetwogether\Mailing\Actions\RequestDoubleOptInAction;
 
 public function create(): void
 {
@@ -79,7 +79,7 @@ public function create(): void
 
     if ($data['subscribe_newsletter'] ?? false) {
     
-        event(new NewsletterSubscribedEvent(
+        app(RequestDoubleOptInAction::class)->execute(
             $data['email'],
             //Set any data accordingly from a chosen provider
             [
@@ -89,8 +89,7 @@ public function create(): void
             /*[
                 'list_id' => '123' //to override main list id if necessary
             ]*/
-        ));
-        
+        );  
     }
 }
 ```

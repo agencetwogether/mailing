@@ -10,7 +10,7 @@ enum MailingProviders: string implements HasLabel
     case MAILCHIMP = 'mailchimp';
     case MAILJET = 'mailjet';
 
-    public function getLabel(): ?string
+    public function getLabel(): string
     {
         return match ($this) {
             self::BREVO => 'Brevo',

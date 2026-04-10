@@ -2,16 +2,23 @@
 
 namespace Agencetwogether\Mailing;
 
-use Agencetwogether\Mailing\Events\NewsletterSubscribedEvent;
-use Agencetwogether\Mailing\Listeners\NewsletterSubscribedListener;
+use Agencetwogether\Mailing\Filament\Components\SubscriptionNewsletterForm;
 use Agencetwogether\Mailing\Services\MailingManager;
-use Illuminate\Support\Facades\Event;
+use App\Traits\IsConditionalModuleTrait;
+use Livewire\Livewire;
 use Spatie\LaravelPackageTools\Commands\InstallCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
 class MailingServiceProvider extends PackageServiceProvider
 {
+    use IsConditionalModuleTrait;
+
+    protected function moduleName(): string
+    {
+        return 'mailing';
+    }
+
     public static string $name = 'mailing';
 
     public static string $viewNamespace = 'mailing';
@@ -24,6 +31,8 @@ class MailingServiceProvider extends PackageServiceProvider
          * More info: https://github.com/spatie/laravel-package-tools
          */
         $package->name(static::$name)
+            ->hasRoutes(['web'])
+            ->hasViews(static::$viewNamespace)
             ->hasMigrations($this->getMigrations())
             ->runsMigrations()
             ->hasTranslations()
@@ -44,10 +53,7 @@ class MailingServiceProvider extends PackageServiceProvider
 
     public function packageBooted(): void
     {
-        Event::listen(
-            NewsletterSubscribedEvent::class,
-            NewsletterSubscribedListener::class
-        );
+        Livewire::component('agencetwogether.filament.mailing.subscription.newsletter.form', SubscriptionNewsletterForm::class);
     }
 
     /**
@@ -57,6 +63,7 @@ class MailingServiceProvider extends PackageServiceProvider
     {
         return [
             'create_mailing_settings',
+            'create_pending_subscribers_table',
         ];
     }
 }

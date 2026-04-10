@@ -9,4 +9,11 @@ interface MailingProviderInterface
         array $data = [],
         array $options = []
     ): void;
+
+    public function sendConfirmationEmail(
+        string $email,
+        string $token,
+        array $data = [],
+        array $options = []
+    ): void;
 }

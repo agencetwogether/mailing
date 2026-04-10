@@ -5,7 +5,7 @@ namespace Agencetwogether\Mailing\Filament\Components;
 use Agencetwogether\Mailing\Settings\MailingSettings;
 use Filament\Forms\Components\Toggle;
 
-class SubscriptionNewsletter extends Toggle
+class SubscriptionNewsletterToggle extends Toggle
 {
     public static function make(?string $name = null): static
     {
@@ -21,10 +21,10 @@ class SubscriptionNewsletter extends Toggle
     {
         parent::setUp();
 
-        $this->label('Recevoir les actualités de la paroisse');
+        $this->label(__('mailing::mailing.subscription_newsletter_toggle.label'));
 
         $this->onColor('success');
 
-        $this->visible(fn () => app(MailingSettings::class)->subscription_newsletter);
+        $this->visible(fn (MailingSettings $settings): bool => $settings->subscription_newsletter);
     }
 }
